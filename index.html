@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Flow</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Focus Flow</h1>
+      <p class="subtitle">A pomodoro timer with a task list that remembers you.</p>
+    </header>
+
+    <main>
+      <section class="timer-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="work">Focus</button>
+          <button class="mode-tab" data-mode="short">Short Break</button>
+          <button class="mode-tab" data-mode="long">Long Break</button>
+        </div>
+
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 240 240">
+            <circle class="ring-track" cx="120" cy="120" r="108"></circle>
+            <circle class="ring-progress" cx="120" cy="120" r="108"></circle>
+          </svg>
+          <div class="ring-center">
+            <span class="time" id="timeDisplay">25:00</span>
+            <span class="session-label" id="sessionLabel">Time to focus</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn secondary" id="resetBtn" title="Reset timer">↺</button>
+          <button class="btn primary" id="startBtn">Start</button>
+          <button class="btn secondary" id="skipBtn" title="Skip to next session">⏭</button>
+        </div>
+
+        <div class="stats">
+          <span>🍅 <strong id="pomoCount">0</strong> completed</span>
+          <span class="dot">·</span>
+          <span>Round <strong id="roundCount">1</strong> of 4</span>
+        </div>
+      </section>
+
+      <section class="tasks-card">
+        <div class="tasks-header">
+          <h2>Tasks</h2>
+          <span class="task-progress" id="taskProgress">0 / 0 done</span>
+        </div>
+        <form id="taskForm" class="task-form">
+          <input type="text" id="taskInput" placeholder="What are you working on?" maxlength="140" autocomplete="off">
+          <button type="submit" class="btn primary small">Add</button>
+        </form>
+        <ul id="taskList" class="task-list"></ul>
+        <p class="empty-hint" id="emptyHint">No tasks yet — add one above to get rolling.</p>
+      </section>
+    </main>
+
+    <footer>
+      <label class="settings-toggle" id="settingsToggle">⚙ Settings</label>
+      <div class="settings-panel" id="settingsPanel">
+        <label>Focus (min) <input type="number" id="workLen" min="1" max="120" value="25"></label>
+        <label>Short break (min) <input type="number" id="shortLen" min="1" max="60" value="5"></label>
+        <label>Long break (min) <input type="number" id="longLen" min="1" max="90" value="15"></label>
+        <label class="checkbox"><input type="checkbox" id="soundToggle" checked> Sound at end of session</label>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
